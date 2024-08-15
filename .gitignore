@@ -5,7 +5,6 @@ out/
 
 ### User ###
 .idea
-.gitignore
 AdvanceJava.iml
 
 ### Eclipse ###
