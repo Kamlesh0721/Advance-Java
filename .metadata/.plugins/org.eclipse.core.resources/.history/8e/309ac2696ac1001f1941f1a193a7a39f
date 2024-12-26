@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<!-- Navbar Section  -->
+	<jsp:include page="<%application.getContextPath() %>/jsp/navbar.jsp" />
+	
+
+	<!-- Content Section -->
+	<div>
+		<h1>Welcome to the User Management System</h1>
+		<p>Use the navigation bar to register, log in, or log out.</p>
+	</div>
+</body>
+</html>

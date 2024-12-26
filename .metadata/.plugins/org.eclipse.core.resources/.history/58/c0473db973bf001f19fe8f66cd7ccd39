@@ -1,0 +1,63 @@
+package feedback_app.session.manage;
+
+import java.io.IOException;
+import java.io.PrintWriter;
+
+import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.WebServlet;
+import jakarta.servlet.http.Cookie;
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
+import jakarta.websocket.Session;
+
+@WebServlet("/request2")
+public class Request2Servlet extends HttpServlet {
+
+	@Override
+	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		resp.setContentType("text/html");
+		PrintWriter writer = resp.getWriter();
+
+		Cookie[] cookies = req.getCookies();
+
+		boolean flag = false;
+		StringBuilder content = new StringBuilder();
+
+		if (cookies != null) {
+			for (Cookie c : cookies) {
+				String name = c.getName();
+				if (name.equals("username")) {
+					System.out.println(c.getValue());
+					content.append("""
+							Welcome User: %s
+							""".formatted(c.getValue()));
+					flag = true;
+				} else if (name.equals("userId")) {
+					System.out.println("userId");
+					content.append("""
+							UserId : %s
+							""".formatted(c.getValue()));
+					flag = true;
+				}
+
+			}
+		}
+		HttpSession session = req.getSession();
+		String httpSessionSecret = (String) session.getAttribute("httpSessionSecret");
+		content.append("""
+				Http Session : %s
+				""".formatted(httpSessionSecret));
+
+
+		if (flag) {
+			System.out.println(content);
+			writer.println(content);
+
+		} else {
+			writer.println("<h3>No user Found</h3>");
+		}
+	}
+
+}

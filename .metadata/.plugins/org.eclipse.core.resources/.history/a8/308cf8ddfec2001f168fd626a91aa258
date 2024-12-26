@@ -1,0 +1,22 @@
+package com.Hibernate.learn_Hibernate;
+
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.cfg.Configuration;
+
+public class App {
+	public static void main(String[] args) {
+		System.out.println("Hello World!");
+		Configuration cfg = new Configuration();
+		cfg.configure("hibernate.cfg.xml");// no need to define for default path
+		// but if we change location then we have to define path
+
+		SessionFactory factory = cfg.buildSessionFactory();
+
+		Student st1 = new Student(1, "Kamlesh", "Haldwani");
+		System.out.println(st1);
+		
+		Session session =factory.getCurrentSession();
+		session.save(st1));
+	}
+}

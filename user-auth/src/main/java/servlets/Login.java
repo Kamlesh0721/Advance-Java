@@ -1,0 +1,29 @@
+package servlets;
+
+import java.io.IOException;
+
+import jakarta.servlet.RequestDispatcher;
+import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.WebServlet;
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
+
+public class Login extends HttpServlet {
+	 protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	        String username = request.getParameter("username");
+	        String password = request.getParameter("password");
+
+	        // Mock user validation (replace with actual user authentication logic)
+	        if ("admin".equals(username) && "admin123".equals(password)) {
+	            HttpSession session = request.getSession();
+	            session.setAttribute("user", username);
+	            response.sendRedirect("jsp/welcome.jsp");
+	        } else {
+	            request.setAttribute("errorMessage", "Invalid username or password.");
+	            RequestDispatcher dispatcher = request.getRequestDispatcher("jsp/error.jsp");
+	            dispatcher.forward(request, response);
+	        }
+	    }
+}

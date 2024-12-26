@@ -1,0 +1,17 @@
+package com.Hibernate.learn_Hibernate;
+
+import org.hibernate.cfg.Configuration;
+
+/**
+ * Hello world!
+ *
+ */
+public class App 
+{
+    public static void main( String[] args )
+    {
+        System.out.println( "Hello World!" );
+        Configuration cfg=new Configuration();
+        cfg.configure("hibernage.cfg.xml");
+    }
+}

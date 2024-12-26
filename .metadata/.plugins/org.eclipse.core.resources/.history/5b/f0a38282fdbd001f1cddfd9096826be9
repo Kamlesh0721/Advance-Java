@@ -1,0 +1,5 @@
+ <ul class="nav">
+        <li><a href="index.jsp">Home</a></li>
+        <li><a href="about.jsp">About</a></li>
+        <li><a href="services.jsp">Services</a></li>
+ </ul>

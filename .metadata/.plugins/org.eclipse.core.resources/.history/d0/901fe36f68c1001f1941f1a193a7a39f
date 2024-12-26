@@ -1,0 +1,15 @@
+
+%>
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Welcome</title>
+</head>
+<body>
+    <h1>Welcome, <%= user.getUsername() %>!</h1>
+    <p>Your email: <%= user.getEmail() %></p>
+    <form action="logout" method="post">
+        <button type="submit">Logout</button>
+    </form>
+</body>
+</html>

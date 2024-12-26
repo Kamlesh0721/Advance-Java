@@ -1,0 +1,38 @@
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.sql.Connection;
+import java.sql.DriverManager;
+
+import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.WebServlet;
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+
+@WebServlet("/TestDB")
+public class TestDB extends HttpServlet {
+    private static final long serialVersionUID = 1L;
+
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        response.setContentType("text/html");
+        PrintWriter out = response.getWriter();
+
+        String url = "jdbc:mysql://localhost:3306/your_database?useSSL=false";
+        String username = "root";
+        String password = "password";
+
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            try (Connection connection = DriverManager.getConnection(url, username, password)) {
+                out.println("<h1>Database Connection Successful!</h1>");
+            }
+        } catch (ClassNotFoundException e) {
+            out.println("<h1>Error: JDBC Driver not found</h1>");
+            e.printStackTrace(out);
+        } catch (Exception e) {
+            out.println("<h1>Error: Unable to connect to database</h1>");
+            e.printStackTrace(out);
+        }
+    }
+}
