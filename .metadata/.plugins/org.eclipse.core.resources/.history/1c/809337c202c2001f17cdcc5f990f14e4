@@ -1,0 +1,44 @@
+package dao;
+
+import model.User;
+import java.sql.*;
+
+public class UserDAO {
+	private final String jdbcURL = "jdbc:mysql://localhost:3306/jdbcconnect";
+	private final String jdbcUsername = "root";
+	private final String jdbcPassword = "root";
+
+	private Connection getConnection() throws SQLException {
+		return DriverManager.getConnection(jdbcURL, jdbcUsername, jdbcPassword);
+	}
+
+	public boolean registerUser(User user) throws SQLException {
+		String sql = "INSERT INTO users (username, email, password) VALUES (?, ?, ?)";
+		try (Connection connection = getConnection(); PreparedStatement statement = connection.prepareStatement(sql)) {
+			statement.setString(1, user.getUsername());
+			statement.setString(2, user.getEmail());
+			statement.setString(3, user.getPassword());
+			return statement.executeUpdate() > 0;
+		}
+	}
+
+	public User loginUser(String username, String password) throws SQLException, ClassNotFoundException {
+		String sql = "SELECT * FROM users WHERE username = ? AND password = ?";
+		Class.forName("com.mysql.cj.jdbc.Driver");
+		
+		try (Connection connection = getConnection(); PreparedStatement statement = connection.prepareStatement(sql)) {
+			statement.setString(1, username);
+			statement.setString(2, password);
+			ResultSet resultSet = statement.executeQuery();
+			if (resultSet.next()) {
+				User user = new User();
+
+				user.setId(resultSet.getInt("id"));
+				user.setUsername(resultSet.getString("username"));
+				user.setEmail(resultSet.getString("email"));
+				return user;
+			}
+		}
+		return null;
+	}
+}

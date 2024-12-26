@@ -1,0 +1,11 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Error</title>
+</head>
+<body>
+    <h2>Error</h2>
+    <p><%= request.getAttribute("errorMessage") %></p>
+    <a href="jsp/login.jsp">Go back to Login</a>
+</body>
+</html>

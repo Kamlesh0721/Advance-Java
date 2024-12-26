@@ -1,0 +1,5 @@
+package com.Hibernate.learn_Hibernate;
+
+public class FetchDetail {
+	
+}

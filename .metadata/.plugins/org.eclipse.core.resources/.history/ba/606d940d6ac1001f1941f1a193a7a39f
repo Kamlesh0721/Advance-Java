@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<!-- Navbar Section  -->
+	
+ <nav>
+        <ul>
+            <li><a href="<%=application.getContextPath()%>/index.jsp">Home</a></li>
+            <li><a href="<%=application.getContextPath()%>/register.jsp">Register</a></li>
+            <li><a href="<%=application.getContextPath()%>/login.jsp">Login</a></li>
+            <li><a href="<%=application.getContextPath()%>/logout">Logout</a></li>
+        </ul>
+    </nav>
+	<!-- Content Section -->
+	<div>
+		<h1>Welcome to the User Management System</h1>
+		<p>Use the navigation bar to register, log in, or log out.</p>
+	</div>
+</body>
+</html>

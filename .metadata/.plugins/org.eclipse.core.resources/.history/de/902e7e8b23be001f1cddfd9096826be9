@@ -1,0 +1,33 @@
+package learn_servlet_Demo;
+
+import java.io.IOException;
+import java.io.PrintWriter;
+
+import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.WebServlet;
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+
+@WebServlet("/third")
+public class Servlet3 extends HttpServlet{
+
+	@Override
+	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		System.out.println("Default doGet method");
+	}
+
+	@Override
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		System.out.println("doPost method");
+		String message=req.getParameter("message");
+		System.out.println(message);
+		
+		// Sending data to browser
+		resp.setContentType("text/html");
+		PrintWriter writer=resp.getWriter();
+		writer.print("<h1>response to browser <%=message%></h1>");
+	}
+	
+	
+}

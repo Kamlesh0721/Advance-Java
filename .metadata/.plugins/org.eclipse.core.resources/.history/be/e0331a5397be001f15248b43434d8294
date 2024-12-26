@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Feedback App</title>
+<%@include file="links.jsp"%>
+</head>
+<body>
+	<div class="container">
+		<nav
+			class="navbar border-bottom border-body navbar-expand-lg bg-body-tertiary">
+			<div class="container-fluid">
+				<a class="navbar-brand" href="#">Feedback App</a>
+			</div>
+		</nav>
+
+		<div class="d-flex flex-column  align-items-center">
+			<h2 class="mb-3 mt-3">Feedback Form</h2>
+			<form class="form-container bg-white p-4 rounded shadow">
+				<div class="mb-3">
+					<label for="exampleInputEmail1" class="form-label">Email
+						address</label> <input type="email" class="form-control"
+						id="exampleInputEmail1" aria-describedby="emailHelp">
+				</div>
+				<div class="mb-3">
+					<label for="phoneno" class="form-label">Email
+						address</label> <input type="tel" class="form-control"
+						id="phoneno" >
+				</div>
+				<div class="mb-3">
+					<label for="feedback" class="form-label">Enter Feedback Here</label>
+					<textarea class="form-control" aria-label="With textarea"
+						id="feedback"></textarea>
+				</div>
+
+
+				<button type="submit" class="btn btn-primary w-100">Submit</button>
+			</form>
+		</div>
+
+	</div>
+	<%@include file="scripts.jsp"%>
+</body>
+</html>

@@ -1,0 +1,18 @@
+package servlets;
+
+import java.io.*;
+import jakarta.servlet.*;
+import jakarta.servlet.http.*;
+
+public class Login extends HttpServlet {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String username = request.getParameter("username");
+        String email = request.getParameter("email");
+        String password = request.getParameter("password");
+
+        // Save user data to the database (mocked here)
+        // UserDAO.save(new User(username, email, password));
+
+        response.sendRedirect("login.jsp");
+    }
+}

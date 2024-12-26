@@ -1,0 +1,28 @@
+package servlets;
+
+import java.io.IOException;
+
+import com.auth.java.model.User;
+
+import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.WebServlet;
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+
+public class Register extends HttpServlet {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+
+		String username = request.getParameter("username");
+		String email = request.getParameter("email");
+		String password = request.getParameter("password");
+
+		// Save user data to the database
+		User user = new User(username,email,password);
+		// UserDAO.save(new User(username, email, password));
+		System.out.println("username: " + username + "\nemail : " + email + "\npassword : " + password);
+
+		response.sendRedirect("jsp/login.jsp");
+	}
+}

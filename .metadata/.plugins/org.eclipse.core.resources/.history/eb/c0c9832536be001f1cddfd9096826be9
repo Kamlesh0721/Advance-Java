@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Feedback App</title>
+<%@include file="links.jsp"%>
+</head>
+<body>
+	<div class="container">
+		<nav
+			class="navbar border-bottom border-body navbar-expand-lg bg-body-tertiary">
+			<div class="container-fluid">
+				<a class="navbar-brand" href="#">Feedback App</a>
+			</div>
+		</nav>
+
+		<button class="d-flex justify-content-center btn btn-primary"
+			type="button">Feedback</button>
+		<div class="d-flex justify-content-start">Button</div>
+		<div class="d-flex justify-content-end">Button</div>
+		<div class="d-flex justify-content-center">Button</div>
+		<div class="d-flex justify-content-between">Button</div>
+		<div class="d-flex justify-content-around">Button</div>
+		<div class="d-flex justify-content-evenly">Button</div>
+	</div>
+	<%@include file="scripts.jsp"%>
+</body>
+</html>

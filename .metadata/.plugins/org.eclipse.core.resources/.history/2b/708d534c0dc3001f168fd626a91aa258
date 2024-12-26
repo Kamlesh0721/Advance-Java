@@ -1,0 +1,37 @@
+package com.Hibernate.learn_Hibernate;
+
+import java.sql.Date;
+
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.cfg.Configuration;
+
+public class App {
+	public static void main(String[] args) {
+		System.out.println("Hello World!");
+		Configuration cfg = new Configuration();
+		cfg.configure("hibernate.cfg.xml");// no need to define for default path
+		// but if we change location then we have to define path
+
+		SessionFactory factory = cfg.buildSessionFactory();
+
+		// Creating Student Object
+		Student st1 = new Student(1, "Kamlesh", "Haldwani");
+		System.out.println(st1);
+
+		// Creating Address Object
+		Address add = new Address();
+		add.setAddId(0);
+		add.setCity("Haldwani");
+		add.setX(10.0);
+		add.setAddedDate(new Date(System.currentTimeMillis()));
+		add.setImage("src/main/java/haldwani.avif");
+		Session session = factory.openSession();
+		session.beginTransaction(); // start transaction
+		session.save(st1); // save transaction
+		session.save(add);
+		session.getTransaction().commit(); // commit : make physical changes
+		session.close(); // close
+
+	}
+}

@@ -1,0 +1,7 @@
+package com.Hibernate.learn_Hibernate;
+
+public class FetchDetail {
+	public static void main(String[] args) {
+		
+	}
+}
